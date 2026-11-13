@@ -1,0 +1,48 @@
+{
+  "engine_settings": {
+    "active_engine": "local",
+    "llama_server_bin": "llama-server",
+    "local_model_path": "auto",
+    "local_host": "127.0.0.1",
+    "local_port": 8080,
+    "prompt_cache_path": "./.omyang.prompt.cache",
+    "cloud_api_key": "YOUR_GEMINI_API_KEY_HERE",
+    "cloud_model": "gemini-2.5-flash",
+    "timeout_seconds": 30
+  },
+  "memory_management": {
+    "orchestrator_max_history_pairs": 6,
+    "macro_memory_compression_threshold": 5,
+    "truncation_head_chars": 800,
+    "truncation_tail_chars": 1200,
+    "max_skill_chars": 4000
+  },
+  "circuit_breakers": {
+    "orchestrator_max_steps": 4,
+    "worker_max_steps": 3,
+    "min_thought_length": 15,
+    "max_duplicate_delegations": 2
+  },
+  "security_settings": {
+    "default_mode": "copilot",
+    "allowed_directories": [
+      "./workspace"
+    ],
+    "blocked_commands_regex": [
+      "^rm\\s+-rf\\s+/",
+      "^mkfs",
+      ":\\(\\)\\s*\\{\\s*:\\|:&\\s*\\};:"
+    ]
+  },
+  "mode_prompts": {
+    "talk": "Mode /talk: Anda adalah rekan diskusi teknis yang ringkas.",
+    "plan": "Mode /plan: Anda adalah perencana strategis. Analisis tugas dan susun rencana langkah demi langkah.",
+    "work": "Mode /work: Anda adalah Supervisor Orkestrator. Delegasikan instruksi teknis kepada Pekerja atau berikan jawaban akhir."
+  },
+  "worker_prompt": {
+    "system_prompt": "Anda adalah Agen Pekerja (Worker). Anda hanya mengeksekusi instruksi teknis menggunakan aksi read, write, atau bash, lalu akhiri dengan report_done.",
+    "few_shot": []
+  },
+  "default_session_mode": "talk",
+  "default_role": "default"
+}
